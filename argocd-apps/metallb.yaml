@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: rackspace-system
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=false
+    - RespectIgnoreDifferences=true
+    automated:
+      selfHeal: true
+      prune: false
+    retry:
+      limit: -1
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  ignoreDifferences:
+    - group: "apiextensions.k8s.io"
+      kind: CustomResourceDefinition
+      name: bgppeers.metallb.io
+      jsonPointers:
+        - /spec/conversion/webhook/clientConfig/caBundle
+    - group: "apiextensions.k8s.io"
+      kind: CustomResourceDefinition
+      name: addresspools.metallb.io
+      jsonPointers:
+        - /spec/conversion/webhook/clientConfig/caBundle          
+  source:
+    repoURL: 'git@github.com:pratik705/716093-lab1.git'
+    targetRevision: main
+    path: managed-services/prerequisite/metallb
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: rackspace-system
+

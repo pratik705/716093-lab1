@@ -1,0 +1,15 @@
+namespace: metallb-system
+helmGlobals:
+  chartHome: ../charts/
+helmCharts:
+- name: metallb
+  includeCRDs: true
+  releaseName: metallb
+  valuesFile: values.yaml
+  version: 0.14.8 
+  repo: https://metallb.github.io/metallb
+
+resources:
+  - ipaddresspool.yaml
+  - l2advertisement.yaml
+

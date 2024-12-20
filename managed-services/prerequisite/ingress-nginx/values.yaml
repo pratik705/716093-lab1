@@ -1,0 +1,13 @@
+controller:
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 600m
+      memory: 2Gi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+  ingressClass: rackspace-nginx
+  ingressClassResource:
+    name: rackspace-nginx
+    controllerValue: "k8s.io/rackspace-ingress-nginx"

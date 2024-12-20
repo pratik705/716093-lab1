@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno
+  namespace: rackspace-system
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=false
+    automated:
+      selfHeal: true
+      prune: false
+  sources:
+    - chart: kyverno
+      repoURL: https://kyverno.github.io/kyverno/
+      targetRevision: 3.3.4
+      helm:
+        releaseName: kyverno
+        valueFiles:
+          - $values/managed-services/kyverno/values.yaml.enc
+    - repoURL: git@github.com:pratik705/716093-lab1.git
+      targetRevision: main
+      ref: values
+    - repoURL: git@github.com:pratik705/716093-lab1.git
+      targetRevision: main
+      path: managed-services/kyverno/
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: rackspace-system

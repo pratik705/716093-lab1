@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: rackspace-system
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=false
+    automated:
+      selfHeal: true
+      prune: false
+    retry:
+      limit: -1
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  source:
+    repoURL: 'git@github.com:pratik705/716093-lab1.git'
+    targetRevision: main
+    path: managed-services/prerequisite/ingress-nginx
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: rackspace-system
