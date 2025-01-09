@@ -19,10 +19,10 @@ spec:
         releaseName: kyverno
         valueFiles:
           - $values/managed-services/kyverno/values.yaml.enc
-    - repoURL: git@github.com:pratik705/716093-lab1.git
+    - repoURL: git@github.com:pratik705/talos-prat4036.git
       targetRevision: main
       ref: values
-    - repoURL: git@github.com:pratik705/716093-lab1.git
+    - repoURL: git@github.com:pratik705/talos-prat4036.git
       targetRevision: main
       path: managed-services/kyverno/
   destination:
