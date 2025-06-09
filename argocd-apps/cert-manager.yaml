@@ -18,7 +18,7 @@ spec:
         factor: 2
         maxDuration: 3m
   source:
-    repoURL: 'git@github.com:pratik705/716093-lab1.git'
+    repoURL: 'git@github.com:rackerlabs/716093-lab1.git'
     targetRevision: main
     path: managed-services/prerequisite/cert-manager
   destination:

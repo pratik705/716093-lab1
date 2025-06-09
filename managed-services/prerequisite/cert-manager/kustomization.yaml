@@ -6,10 +6,12 @@ helmCharts:
   includeCRDs: true
   releaseName: cert-manager
   valuesFile: values.yaml  
-  version: v1.13.2
+  version: v1.17.1
   repo: https://charts.jetstack.io
 resources:
-  - 'https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.crds.yaml'
+  - 'https://github.com/cert-manager/cert-manager/releases/download/v1.17.1/cert-manager.crds.yaml'
   - './rackspace-selfsigned-issuer.yaml'
   - './rackspace-selfsigned-ca.yaml'  
   - './rackspace-ca-issuer.yaml'
+
+

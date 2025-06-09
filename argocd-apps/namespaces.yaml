@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secret
+  name: namespace
   namespace: rackspace-system
 spec:
   project: default
@@ -18,9 +18,9 @@ spec:
         factor: 2
         maxDuration: 3m
   source:
-    repoURL: 'git@github.com:pratik705/716093-lab1.git'
-    targetRevision: main
-    path: managed-services/prerequisite/sealed-secret
+    repoURL: 'git@github.com:rackerlabs/716093-lab1.git'
+    targetRevision: HEAD
+    path: managed-services/prerequisite/namespaces
   destination:
     server: "https://kubernetes.default.svc"
     namespace: rackspace-system

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace
+  name: gateway-api-resources
   namespace: rackspace-system
 spec:
   project: default
@@ -18,9 +18,9 @@ spec:
         factor: 2
         maxDuration: 3m
   source:
-    repoURL: 'git@github.com:pratik705/716093-lab1.git'
+    repoURL: 'git@github.com:rackerlabs/rmpk-demo.git'
     targetRevision: HEAD
-    path: managed-services/prerequisite/namespace
+    path: managed-services/managed-services/gateway
   destination:
     server: "https://kubernetes.default.svc"
     namespace: rackspace-system

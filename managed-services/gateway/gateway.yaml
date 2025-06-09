@@ -1,0 +1,24 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: rmpk-gateway
+  namespace: rackspace-system
+  annotations:
+    cert-manager.io/cluster-issuer: rackspace-ca-issuer
+    metallb.universe.tf/address-pool: default-pool
+spec:
+  gatewayClassName: eg  
+  listeners:
+    - name: argocd-https
+      port: 443
+      protocol: HTTPS
+      hostname: <REPLACEME>
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: argocd-tls
